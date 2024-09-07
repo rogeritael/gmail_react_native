@@ -2,14 +2,13 @@ import "@/styles/global.css"
 import { Slot } from "expo-router"
 import { StatusBar } from "expo-status-bar"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
-
+import { Loading } from "@/components/loading"
 import {
     useFonts,
     Roboto_400Regular,
     Roboto_500Medium,
     Roboto_700Bold
 } from "@expo-google-fonts/roboto"
-import { Loading } from "@/components/loading"
 
 export default function Layout(){
     const [ fontsLoaded ] = useFonts({
@@ -23,7 +22,7 @@ export default function Layout(){
     }
 
     return (
-        <GestureHandlerRootView>
+        <GestureHandlerRootView >
             <StatusBar style="light"/>
             <Slot />
         </GestureHandlerRootView>
