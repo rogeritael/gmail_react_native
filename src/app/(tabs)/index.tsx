@@ -3,6 +3,7 @@ import { Text, View } from 'react-native'
 import Constants from 'expo-constants'
 import { MenuButton } from '@/components/menu-button'
 import { Avatar } from '@/components/avatar'
+import { Email } from '@/components/email'
 
 const statusBarHeight = Constants.statusBarHeight
 
@@ -19,6 +20,7 @@ export default function Home(){
                     source={{ uri: "https://github.com/rogeritael.png" }}
                 />
             </Input>
+            <Email />
         </View>
     )
 }
