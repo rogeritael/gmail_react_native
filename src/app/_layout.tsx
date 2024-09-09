@@ -22,7 +22,7 @@ export default function Layout(){
     }
 
     return (
-        <GestureHandlerRootView >
+        <GestureHandlerRootView>
             <StatusBar style="light"/>
             <Slot />
         </GestureHandlerRootView>
