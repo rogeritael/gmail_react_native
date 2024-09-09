@@ -1,9 +1,10 @@
 import { Input } from '@/components/input'
-import { Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 import Constants from 'expo-constants'
 import { MenuButton } from '@/components/menu-button'
 import { Avatar } from '@/components/avatar'
 import { Email } from '@/components/email'
+import { EMAILS } from '@/utils/emails'
 
 const statusBarHeight = Constants.statusBarHeight
 
@@ -20,7 +21,14 @@ export default function Home(){
                     source={{ uri: "https://github.com/rogeritael.png" }}
                 />
             </Input>
-            <Email />
+            <FlatList
+                data={EMAILS}
+                keyExtractor={email => email.id}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item }) => <Email data={item} />}
+                contentContainerClassName="gap-6"
+                ListHeaderComponent={() => <Text className='uppercase text-gray-400 text-sm font-subtitle mt-6'>Entrada</Text>} //Componente que aparece no topo
+            />
         </View>
     )
 }
