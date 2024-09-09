@@ -31,7 +31,7 @@ export default function DrawerLayout(){
                 iconName: 'settings', notifications: 1 } as CustomOptions}
             />
             <Drawer.Screen
-                name="exit-box"
+                name="exit-box" 
                 options={{ title: 'Caixa de saída',
                 iconName: 'outbox', divider: true, notifications: 0 } as CustomOptions}
             />

@@ -15,11 +15,23 @@ export function DrawerContent(drawerProps: DrawerContentComponentProps){
             </View>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 42 }}>
                 {drawerProps.state.routes.map((route, index) => {
-                    const isFocused = drawerProps.state.index
+                    const isFocused = drawerProps.state.index === index
                     const options = drawerProps.descriptors[route.key].options as CustomOptions
 
                     if(options.title === undefined){ //evita renderizar itens desnecessários
                         return //entende tudo como rotas da aplicação dentro da pasta app/drawer
+                    }
+
+                    const onPress = () => {
+                        const event = drawerProps.navigation.emit({
+                            type: 'drawerItemPress',
+                            canPreventDefault: true,
+                            target: route.key
+                        })
+                    
+                        if(!isFocused && !event?.defaultPrevented){
+                            drawerProps.navigation.navigate(route.name, route.params)
+                        }
                     }
 
                     return (
@@ -30,10 +42,12 @@ export function DrawerContent(drawerProps: DrawerContentComponentProps){
                                 </Text>
                             )}
                             <DrawerButton
+                                onPress={onPress}
                                 title={options.title!}
                                 iconName={options.iconName}
                                 divider={options.divider}
                                 notifications={options.notifications}
+                                isFocused={isFocused}
                             />
                         </View>
                     )
